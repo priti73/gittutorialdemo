@@ -23,7 +23,7 @@ function onSubmit(e) { 
               nameInput.value = '';    emailInput.value = '';
            }
 document.addEventListener("DOMContentLoaded", () => {  
-   axios.get("https://crudcrud.com/api/b21eaa7d6f794b7f85149d5da23816ea/appointmentdata")
+    axios.get("https://crudcrud.com/api/b21eaa7d6f794b7f85149d5da23816ea/appointmentdata")
    .then((response)  =>{
      console.log(response);
      for(var i=0;i<response.data.length;i++){

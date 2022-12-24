@@ -14,13 +14,13 @@ function onSubmit(e) { 
        // Remove error after 3 seconds    
      setTimeout(() => msg.remove(), 3000);  
     } else {  
-          // Create new list item with user  
+         
           const li = document.createElement('li');
             let obj={   
                          nameInput:nameInput.value, 
                             emailInput:emailInput.value    } 
                   let myobj=JSON.stringify(obj);
-  axios.post("https://crudcrud.com/api/50833bbbec5147a8a5f3e71a011a5414/appointmentdata",obj)
+  axios.post("https://crudcrud.com/api/c40aaa380a6740e2bc613a7db3d0380e/appointmentdata",obj)
   .then((response) =>{
     showNewUserOnScreen(response.data)
    console.log(response);
@@ -57,16 +57,23 @@ userList.appendChild(li);   
  nameInput.value = '';    emailInput.value = '';}}
  function showNewUserOnScreen(user){ // if(localStorage.getItem(user.emailInput) !== null){   //   removeuserfromscreen(user.emailInput)  //  }
  
-                 const parentNode = document.getElementById('listOfUsers');           
+                 const parentNode = document.getElementById('listofusers');           
       const childHTML = `<li id=${user.emailInput}> ${user.nameInput} - ${user.emailInput}     
-                                     <button onclick=deleteUser('${user.emailInput}')> Delete User </button> </li>`
+                                     <button onclick=deleteUser('${user.emailInput}')>Delete User </button>
+   <button onclick=editUserDetails('${user.nameInput}','${user.emailInput}')>Edit User </button></li>`
              parentNode.innerHTML = parentNode.innerHTML + childHTML;            }
             // deleteUser('abc@gmail.com')
  function deleteUser(emailInput){  console.log(emailInput) 
     localStorage.removeItem(emailInput);removeuserfromscreen(emailInput); } 
      function removeuserfromscreen(emailInput){ 
-          const parentNode = document.getElementById('listOfUsers');   
+          const parentNode = document.getElementById('listofusers');   
          const childNodeToBeDeleted = document.getElementById(emailInput);   
          //if( childNodetobedeleted){
                parentNode.removeChild(childNodeToBeDeleted)          // 
         }   
+function editUserDetails(nameInput,emailInput){
+   
+  document.getElementById('name').value=nameInput;
+
+document.getElementById('email').value=emailInput;
+            deleteUser(emailInput)}

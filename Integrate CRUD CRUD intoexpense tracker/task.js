@@ -17,7 +17,7 @@ function onSubmit(e){
             expenseAmount:expenseAmount.value,
             category:category.value
         }
-        axios.post("https://crudcrud.com/api/5041fbf1f6ec47bba54ee7d52dd679bd/expensetracker",obj)
+        axios.post("https://crudcrud.com/api/5050cd63811e41d1840ab72878773d92/expensetracker",obj)
         .then((response) =>{
           showUserOnScreen(response.data)
          console.log(response.data);
@@ -32,7 +32,7 @@ function onSubmit(e){
            }
 }
 document.addEventListener("DOMContentLoaded", () => {  
-    axios.get("https://crudcrud.com/api/5041fbf1f6ec47bba54ee7d52dd679bd/expensetracker")
+    axios.get("https://crudcrud.com/api/5050cd63811e41d1840ab72878773d92/expensetracker")
    .then((response)  =>{
      console.log(response);
      for(var i=0;i<response.data.length;i++){
@@ -53,7 +53,7 @@ function showUserOnScreen(user){
     parentNode.innerHTML=parentNode.innerHTML+childHTML;
 }
 function deleteExpense(userid){
-    axios.delete(`https://crudcrud.com/api/5041fbf1f6ec47bba54ee7d52dd679bd/expensetracker/${userid}`)
+    axios.delete(`https://crudcrud.com/api/5050cd63811e41d1840ab72878773d92/expensetracker/${userid}`)
               .then((response) =>{
                removeUserFromScreen(userid)
                  })
@@ -69,7 +69,7 @@ function removeUserFromScreen(userid){
     }
 }
 function EditExpense(userid){
-    axios.get(`https://crudcrud.com/api/5041fbf1f6ec47bba54ee7d52dd679bd/expensetracker/${userid}`)
+    axios.get(`https://crudcrud.com/api/5050cd63811e41d1840ab72878773d92/expensetracker/${userid}`)
    .then((response) =>{
     console.log(response.data);
     document.getElementById('amount').value=response.data.expenseAmount;
